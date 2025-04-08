@@ -52,7 +52,7 @@
       if( !$import.length ) {
         $import = $( [
           '<div class="import btn-group">',
-          '<button class="btn' +
+          '<button class="btn btn-import' +
           sprintf( ' btn-%s', this.options.buttonsClass ) +
           sprintf( ' btn-%s', this.options.iconSize ) +
           ' dropdown-toggle" aria-label="import type" ' +
