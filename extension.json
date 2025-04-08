@@ -1,0 +1,17 @@
+{
+  "name": "Table Import",
+  "version": "1.0.0",
+  "description": "Import your table data to JSON, XML, CSV, TXT, SQL, Word, Excel, PNG, PDF.",
+  "url": "https://github.com/wenzhixin/bootstrap-table/tree/master/src/extensions/export",
+  "example": "https://issues.wenzhixin.net.cn/bootstrap-table/#extensions/export.html",
+
+  "plugins": [{
+    "name": "tableImport.jquery.plugin",
+    "url": "https://github.com/hhurz/tableExport.jquery.plugin"
+  }],
+
+  "author": {
+    "name": "wenzhixin",
+    "image": "https://avatars1.githubusercontent.com/u/2117018"
+  }
+}
