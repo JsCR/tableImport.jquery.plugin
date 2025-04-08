@@ -2,3 +2,119 @@
  * @author HangBo Ou <fantasyoui@gmail.com>
  * extensions: https://github.com/kayalshri/tableExport.jquery.plugin
  */
+
+( function( $ ) {
+  'use strict';
+  var sprintf = $.fn.bootstrapTable.utils.sprintf;
+
+  $.extend( $.fn.bootstrapTable.defaults, {
+    showImport: false
+  } );
+
+  $.extend( $.fn.bootstrapTable.defaults.icons, {
+    import: 'glyphicon-import icon-share'
+  } );
+
+  $.extend( $.fn.bootstrapTable.locales, {
+    formatExport: function() {
+      return 'Import data';
+    }
+  } );
+  $.extend( $.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales );
+
+  var BootstrapTable = $.fn.bootstrapTable.Constructor,
+    _initToolbar = BootstrapTable.prototype.initToolbar;
+
+  BootstrapTable.prototype.initToolbar = function() {
+    this.showToolbar = this.options.showImport;
+
+    _initToolbar.apply( this, Array.prototype.slice.apply( arguments ) );
+
+    if( this.options.showImport ) {
+      var that = this,
+        $btnGroup = this.$toolbar.find( '>.btn-group' ),
+        $import = $btnGroup.find( 'div.import' );
+
+      if( !$export.length ) {
+        $import = $( [
+          '<div class="import btn-group">',
+          '<button class="btn' +
+          sprintf( ' btn-%s', this.options.buttonsClass ) +
+          sprintf( ' btn-%s', this.options.iconSize ) +
+          ' dropdown-toggle" aria-label="import type" ' +
+          'title="' + this.options.formatImport() + '" ' +
+          'data-toggle="dropdown" type="button">',
+          sprintf( '<i class="%s %s"></i> ', this.options.iconsPrefix, this.options.icons.import ),
+          '<span class="caret"></span>',
+          '</button>',
+          '<ul class="dropdown-menu" role="menu">',
+          '</ul>',
+          '</div>' ].join( '' ) ).appendTo( $btnGroup );
+
+        var $menu = $import.find( '.dropdown-menu' ),
+          exportTypes = this.options.exportTypes;
+
+        if( typeof this.options.exportTypes === 'string' ) {
+          var types = this.options.exportTypes.slice( 1, -1 ).replace( / /g, '' ).split( ',' );
+
+          exportTypes = [];
+          $.each( types, function( i, value ) {
+            exportTypes.push( value.slice( 1, -1 ) );
+          } );
+        }
+        $.each( exportTypes, function( i, type ) {
+          if( TYPE_NAME.hasOwnProperty( type ) ) {
+            $menu.append( [ '<li role="menuitem" data-type="' + type + '">',
+              '<a href="javascript:void(0)">',
+              TYPE_NAME[ type ],
+              '</a>',
+              '</li>' ].join( '' ) );
+          }
+        } );
+
+        $menu.find( 'li' ).click( function() {
+          var li = this;
+          if( typeof require !== 'function' ) {
+            throw new Error( "RequireJS not found" );
+          }
+          require( [ 'tableexport' ], function() {
+            var type = $( li ).data( 'type' ),
+              doExport = function() {
+                that.$el.tableExport( $.extend( {}, that.options.exportOptions, {
+                  type: type,
+                  escape: false
+                } ) );
+              };
+
+            if( that.options.exportDataType === 'all' && that.options.pagination ) {
+              that.$el.one( that.options.sidePagination === 'server' ? 'post-body.bs.table' : 'page-change.bs.table', function() {
+                doExport();
+                that.togglePagination();
+              } );
+              that.togglePagination();
+            } else if( that.options.exportDataType === 'selected' ) {
+              var data = that.getData(),
+                selectedData = that.getAllSelections();
+
+              // Quick fix #2220
+              if( that.options.sidePagination === 'server' ) {
+                data = { total: that.options.totalRows };
+                data[ that.options.dataField ] = that.getData();
+
+                var Table = typeof require === 'function' ? require( 'table' ) : null;
+                selectedData = { total: that.options.totalRows };
+                selectedData[ that.options.dataField ] = Table && that.options.maintainSelected ? Table.api.selecteddata( that.$el ) : that.getAllSelections();
+              }
+
+              that.load( selectedData );
+              doExport();
+              that.load( data );
+            } else {
+              doExport();
+            }
+          } );
+        } );
+      }
+    }
+  };
+} )( jQuery );
