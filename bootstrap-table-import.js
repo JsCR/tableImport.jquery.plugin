@@ -30,12 +30,12 @@
 
     _initToolbar.apply( this, Array.prototype.slice.apply( arguments ) );
 
-    if( this.options.showImport ) {
+    if( this.showToolbar ) {
       var that = this,
         $btnGroup = this.$toolbar.find( '>.btn-group' ),
         $import = $btnGroup.find( 'div.import' );
 
-      if( !$export.length ) {
+      if( !$import.length ) {
         $import = $( [
           '<div class="import btn-group">',
           '<button class="btn' +
