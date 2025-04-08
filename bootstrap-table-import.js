@@ -35,6 +35,7 @@
         $btnGroup = this.$toolbar.find( '>.btn-group' ),
         $import = $btnGroup.find( 'div.import' );
       console.log( 'this.options.extend.import_url', this.options.extend.import_url );
+      console.log( 'Fast', Fast );
 
       if( !$import.length ) {
         $import = $( [
