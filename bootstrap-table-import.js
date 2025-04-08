@@ -52,10 +52,10 @@
         if( typeof require !== 'function' ) {
           throw new Error( "RequireJS not found" );
         }
-        require( [ 'upload' ], function( Upload ) {
-          Upload.api.upload( $( '.btn-import', $import ), function( data, ret ) {
+        require( [ 'upload' ], ( Upload ) => {
+          Upload.api.upload( $( '.btn-import', $import ), ( data, ret ) => {
             Fast.api.ajax( {
-              url: options.extend.import_url, data: { file: data.url },
+              url: this.options.extend.import_url, data: { file: data.url },
             }, function( data, ret ) {
               table.trigger( "uncheckbox" );
               table.bootstrapTable( 'refresh' );
