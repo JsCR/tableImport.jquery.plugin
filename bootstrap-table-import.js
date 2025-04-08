@@ -36,6 +36,7 @@
         $import = $btnGroup.find( 'div.import' );
       console.log( 'this.options.extend.import_url', this.options.extend.import_url );
       console.log( 'Fast', Fast );
+      console.log( 'table', table );
 
       if( !$import.length ) {
         $import = $( [
