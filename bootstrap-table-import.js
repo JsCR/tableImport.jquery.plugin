@@ -34,7 +34,7 @@
       var //
         $btnGroup = this.$toolbar.find( '>.btn-group' ),
         $import = $btnGroup.find( 'div.import' );
-      console.log( 'options.extend.import_url', options.extend.import_url );
+      console.log( 'this.options.extend.import_url', this.options.extend.import_url );
 
       if( !$import.length ) {
         $import = $( [
