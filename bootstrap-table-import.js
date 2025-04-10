@@ -1,3 +1,5 @@
+// noinspection DuplicatedCode
+
 /**
  * @author HangBo Ou <fantasyoui@gmail.com>
  * extensions: https://github.com/kayalshri/tableExport.jquery.plugin
@@ -33,8 +35,6 @@
       var //
         $btnGroup = this.$toolbar.find( '>.btn-group' ), $import = $btnGroup.find( 'div.import' );
       console.log( 'this.options.extend.import_url', this.options.extend.import_url );
-      console.log( 'Fast', Fast );
-      console.log( 'table', table );
 
       if( !$import.length ) {
         $import = $( [ //
@@ -74,11 +74,9 @@
                 '<div>导入失败：</div>'+
                 $html_failed +
                 '</div>';
-              Layer.confirm( $html + '<div style=" color: red; ">策划书测试</div>', {}, function( index ) {
-
+              Layer.confirm( $html, {}, function( index ) {
                 layer.close( index );
               }, function( index ) {
-
                 layer.close( index );
               } );
               // table.trigger( "uncheckbox" );
