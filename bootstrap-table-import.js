@@ -58,7 +58,7 @@
               url: this.options.extend.import_url, data: { file: data.url },
             }, function( data, response ) {
               console.log( data, response );
-              Layer.confirm( 'lasfjksalasf', {}, function( index ) {
+              Layer.confirm( '<div style=" color: red; ">策划书测试</div>', {}, function( index ) {
 
                 layer.close( index );
               }, function( index ) {
