@@ -59,10 +59,11 @@
             console.log( data, ret );
             Fast.api.ajax( {
               url: this.options.extend.import_url, data: { file: data.url },
-            }, function( data, ret ) {
-              console.log( data, ret, table );
-              table.trigger( "uncheckbox" );
-              table.bootstrapTable( 'refresh' );
+            }, function( data, response ) {
+              console.log( data, response );
+              Layer.confirm('lasfjksalasf', {}, function() {}, function() {});
+              // table.trigger( "uncheckbox" );
+              // table.bootstrapTable( 'refresh' );
             } );
           } );
         } );
