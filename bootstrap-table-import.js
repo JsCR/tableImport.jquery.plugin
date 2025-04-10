@@ -58,7 +58,23 @@
               url: this.options.extend.import_url, data: { file: data.url },
             }, function( data, response ) {
               console.log( data, response );
-              Layer.confirm( '<div style=" color: red; ">策划书测试</div>', {}, function( index ) {
+              var $html_successed = '';
+              data.successed.forEach( function( item ) {
+                $html_successed += '<div>' + item + '</div>';
+              } );
+              var $html_failed = '';
+              data.failed.forEach( function( item ) {
+                $html_failed += '<div>' + item.title + ':' + item.reason + '</div>';
+              });
+              var $html = '<div style=" color: green; ">' +
+                '<div>导入成功：</div>'+
+                $html_successed +
+                '</div>' +
+                '<div style=" color: red; ">' +
+                '<div>导入失败：</div>'+
+                $html_failed +
+                '</div>';
+              Layer.confirm( $html + '<div style=" color: red; ">策划书测试</div>', {}, function( index ) {
 
                 layer.close( index );
               }, function( index ) {
