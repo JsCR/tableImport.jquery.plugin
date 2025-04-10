@@ -60,7 +60,7 @@
             Fast.api.ajax( {
               url: this.options.extend.import_url, data: { file: data.url },
             }, function( data, ret ) {
-              console.log( data, ret );
+              console.log( data, ret, table );
               table.trigger( "uncheckbox" );
               table.bootstrapTable( 'refresh' );
             } );
