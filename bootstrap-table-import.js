@@ -79,10 +79,8 @@
               }, function( index ) {
                 layer.close( index );
               } );
-              // table.trigger( "uncheckbox" );
-              // table.bootstrapTable( 'refresh' );
-            }, function( ) {
-              console.log( arguments );
+            }, function( response, error ) {
+              console.log( response, error );
             } );
           } );
         } );
