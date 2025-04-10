@@ -81,6 +81,8 @@
               } );
               // table.trigger( "uncheckbox" );
               // table.bootstrapTable( 'refresh' );
+            }, function( ) {
+              console.log( arguments );
             } );
           } );
         } );
