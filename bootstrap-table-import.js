@@ -56,9 +56,11 @@
         }
         require( [ 'upload' ], ( Upload ) => {
           Upload.api.upload( $( '.btn-import', $import ), ( data, ret ) => {
+            console.log( data, ret );
             Fast.api.ajax( {
               url: this.options.extend.import_url, data: { file: data.url },
             }, function( data, ret ) {
+              console.log( data, ret );
               table.trigger( "uncheckbox" );
               table.bootstrapTable( 'refresh' );
             } );
