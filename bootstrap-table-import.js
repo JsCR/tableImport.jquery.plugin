@@ -58,7 +58,13 @@
               url: this.options.extend.import_url, data: { file: data.url },
             }, function( data, response ) {
               console.log( data, response );
-              Layer.confirm( 'lasfjksalasf', {}, function() {}, function() {} );
+              Layer.confirm( 'lasfjksalasf', {}, function( index ) {
+
+                layer.close( index );
+              }, function( index ) {
+
+                layer.close( index );
+              } );
               // table.trigger( "uncheckbox" );
               // table.bootstrapTable( 'refresh' );
             } );
