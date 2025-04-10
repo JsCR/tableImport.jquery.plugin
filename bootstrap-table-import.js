@@ -74,7 +74,7 @@
                 '<div>导入失败：</div>'+
                 $html_failed +
                 '</div>';
-              Layer.confirm( $html, {}, function( index ) {
+              Layer.confirm( $html, { title: `导入“${ response.type }”` }, function( index ) {
                 layer.close( index );
               }, function( index ) {
                 layer.close( index );
