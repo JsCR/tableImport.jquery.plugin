@@ -61,12 +61,17 @@
               var $html_successed = '';
               for( var [ key, value ] of Object.entries( data.successed ) ) {
                 console.log( key, value )
+                $html_successed += '<div>' + key + '</div>';
               }
-              data.successed.forEach( function( item ) {
+              data.successed.forEach && data.successed.forEach( function( item ) {
                 $html_successed += '<div>' + item + '</div>';
               } );
               var $html_failed = '';
-              data.failed.forEach( function( item ) {
+              for( var [ key, value ] of Object.entries( data.failed ) ) {
+                console.log( key, value )
+                $html_successed += '<div>' + key + '</div>';
+              }
+              data.failed.forEach && data.failed.forEach( function( item ) {
                 $html_failed += '<div>' + item.title + ':' + item.reason + '</div>';
               });
               var $html = '<div style=" color: green; ">' +
