@@ -59,6 +59,9 @@
             }, function( data, response ) {
               console.log( data, response );
               var $html_successed = '';
+              for( var [ key, value ] of Object.entries( data.successed ) ) {
+                console.log( key, value )
+              }
               data.successed.forEach( function( item ) {
                 $html_successed += '<div>' + item + '</div>';
               } );
