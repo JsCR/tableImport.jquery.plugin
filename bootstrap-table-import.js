@@ -74,7 +74,7 @@
               data.failed.forEach && data.failed.forEach( function( item ) {
                 $html_failed += '<div>' + item.title + ':' + item.reason + '</div>';
               } );
-              var $html = '<div style=" height: 740px; overflow: scroll; "><div style=" color: green; ">' +
+              var $html = '<div style=" height: 100%; overflow-y: scroll; "><div style=" color: green; ">' +
                 '<div>导入成功：</div>'+
                 $html_successed +
                 '</div>' +
