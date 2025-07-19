@@ -82,7 +82,7 @@
                 '<div>导入失败：</div>'+
                 $html_failed +
                 '</div></div>';
-              Layer.confirm( $html, { title: `导入“${ response.type }”`, area: [ '740px', '740px' ] }, function( index ) {
+              Layer.confirm( $html, { title: `导入“${ response.type }”`, area: [ '740px', '640px' ] }, function( index ) {
                 layer.close( index );
               }, function( index ) {
                 layer.close( index );
