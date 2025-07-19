@@ -73,7 +73,7 @@
               }
               data.failed.forEach && data.failed.forEach( function( item ) {
                 $html_failed += '<div>' + item.title + ':' + item.reason + '</div>';
-              });
+              } );
               var $html = '<div style=" color: green; ">' +
                 '<div>导入成功：</div>'+
                 $html_successed +
@@ -82,7 +82,7 @@
                 '<div>导入失败：</div>'+
                 $html_failed +
                 '</div>';
-              Layer.confirm( $html, { title: `导入“${ response.type }”`, area: [ '740px', 'auto' ] }, function( index ) {
+              Layer.confirm( $html, { title: `导入“${ response.type }”`, area: [ '740px', '740px' ] }, function( index ) {
                 layer.close( index );
               }, function( index ) {
                 layer.close( index );
